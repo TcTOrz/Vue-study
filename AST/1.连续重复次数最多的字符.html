@@ -1,0 +1,35 @@
+<!--
+ * @Author: Li Jian
+ * @Date: 2021-04-18 13:30:25
+ * @LastEditTime: 2021-04-18 14:01:01
+ * @LastEditors: Li Jian
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1、连续重复次数最多的字符</title>
+</head>
+<body>
+  <script>
+    const str = 'aaabbccccdd'
+    let i = 0,
+      j = 1,
+      maxRepeat = 0,
+      maxRepeatStr = ''
+    while(i < str.length) {
+      if (str[i] !== str[j]) {
+        if (j - i > maxRepeat) {
+          maxRepeat = j - i
+          maxRepeatStr = str.charAt(i)
+        }
+        i = j
+      }
+      j++
+    }
+    console.log(`最大的数是：${maxRepeatStr}, 重复了${maxRepeat}次`)
+  </script>
+</body>
+</html>

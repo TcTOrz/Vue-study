@@ -1,0 +1,20 @@
+{
+  "name": "5.ast-write",
+  "version": "1.0.0",
+  "description": "AST代码手写",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server"
+  },
+  "keywords": [
+    "AST"
+  ],
+  "author": "TCTORZ",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.33.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

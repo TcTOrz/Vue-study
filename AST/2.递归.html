@@ -1,0 +1,30 @@
+<!--
+ * @Author: Li Jian
+ * @Date: 2021-04-18 14:03:46
+ * @LastEditTime: 2021-04-18 14:41:49
+ * @LastEditors: Li Jian
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2、递归深入-试输出斐波那契数列的前十项</title>
+</head>
+<body>
+  <script>
+    // 1、1、2、3、5、8、13、21、34、55
+    const cache = {}
+    for (let i = 0; i < 10; i++) {
+      console.log(fiber(i))
+    }
+    function fiber(n) {
+      if (cache?.hasOwnProperty(n)) return cache[n]
+      let v = n === 1 || n === 0 ? 1 : fiber(n - 1) + fiber(n - 2)
+      cache[n] =  v
+      return v
+    }
+  </script>
+</body>
+</html>

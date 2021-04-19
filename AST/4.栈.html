@@ -1,0 +1,52 @@
+<!--
+ * @Author: Li Jian
+ * @Date: 2021-04-18 16:20:15
+ * @LastEditTime: 2021-04-19 09:30:27
+ * @LastEditors: Li Jian
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>栈</title>
+  </head>
+  <body>
+    <script>
+      // 将2[3[a]4[1[b]2[c]]]转变为aaabccbccbccbccaaabccbccbccbcc，不考虑非法清醒
+      // 思路
+      // 创建两个栈，一个栈存放字符串中的数字，一个存放当遇到]时，放入''空字符串
+      // 当遇到]时，数字弹栈，字母repeat，将字母存入上一个栈中
+      const str = "2[3[a]4[10[a1bc]2[c]]]";
+      function smartRepeat(templateStr) {
+        let index = 0;
+        const stack1 = []; // 存放数字
+        const stack2 = [];  // 存放字符串
+        let rest = templateStr; // 剩余部分
+        while (index < str.length - 1) {
+          rest = templateStr.substring(index);
+          if (/^\d+\[/.test(rest)) {
+            let [, times] = rest.match(/^(\d+)\[/);
+            index += times.length + 1;
+            times = Number(times);
+            stack1.push(times);
+            stack2.push('');
+          } else if (/^\w+\]/.test(rest)) {
+            let [, word] = rest.match(/^(\w+)\]/);
+            stack2[stack2.length - 1] = word;
+            index += word.length;
+          } else if (rest[0] === ']') {
+            const times = stack1.pop();
+            const word = stack2.pop();
+            stack2[stack2.length - 1] += word.repeat(times);
+            index++;
+          }
+        }
+        return stack2[0].repeat(stack1[0]);
+      }
+      const ret = smartRepeat(str);
+      console.log(ret);
+    </script>
+  </body>
+</html>

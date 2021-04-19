@@ -1,0 +1,69 @@
+<!--
+ * @Author: Li Jian
+ * @Date: 2021-04-18 15:05:19
+ * @LastEditTime: 2021-04-18 15:58:18
+ * @LastEditors: Li Jian
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3、递归深入-将数组转变为对象</title>
+  </head>
+
+  <body>
+    <script>
+      // 将数组[1, 2, [3, [4, 5], 6], 7, [8, 9]]转变成对象
+      // {
+      //   children: [
+      //     { value: 1 },
+      //     { value: 2 },
+      //     {
+      //       children: [
+      //         { value: 3 },
+      //         {
+      //           children: [
+      //             { value: 4 },
+      //             { value: 5 }
+      //           ],
+      //         },
+      //         { value: 6 },
+      //       ]
+      //     },
+      //     { value: 7 },
+      //     {
+      //       children: [
+      //         { value: 8 },
+      //         { value: 9 }
+      //       ]
+      //     }
+      //   ]
+      // }
+      const arr = [1, 2, [3, [4, 5], 6], 7, [8, 9]];
+
+      function convert(arr) {
+        const ret = [];
+        for (let i = 0; i < arr.length; i++) {
+          if (typeof arr[i] === "number") {
+            ret.push({ value: arr[i] });
+          } else if (Array.isArray(arr[i])) {
+            ret.push({ children: convert(arr[i]) });
+          }
+        }
+        return ret;
+      }
+      console.log(convert(arr));
+
+      function convert1(item) {
+        if (typeof item === "number") {
+          return { value: item };
+        } else if (Array.isArray(item)) {
+          return { children: item.map((_item) => convert1(_item)) };
+        }
+      }
+      console.log(convert1(arr).children);
+    </script>
+  </body>
+</html>
