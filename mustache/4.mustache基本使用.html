@@ -1,0 +1,63 @@
+<!--
+ * @Author: Li Jian
+ * @Date: 2021-04-21 13:52:56
+ * @LastEditTime: 2021-04-21 14:47:32
+ * @LastEditors: Li Jian
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.mustache基本使用</title>
+</head>
+<body>
+  <div id="container"></div>
+  <script src='jslib/mustache.js'></script>
+  <script type="text/template" id="mytemplate">
+    <ul>
+      {{#arr}}
+        <li>
+          <div class="hd">{{name}}的信息</div>
+          <div class="bd">
+            <p>姓名:{{name}}</p>
+            <p>年龄:{{age}}</p>
+            <p>性别:{{sex}}</p>
+          </div>
+        </li>
+      {{/arr}}
+    </ul>
+  </script>
+  <script>
+    // console.log(Mustache);
+    // const templateStr = `
+    //   <ul>
+    //     {{#arr}}
+    //       <li>
+    //         <div class="hd">{{name}}的信息</div>
+    //         <div class="bd">
+    //           <p>姓名:{{name}}</p>
+    //           <p>年龄:{{age}}</p>
+    //           <p>性别:{{sex}}</p>
+    //         </div>
+    //       </li>
+    //     {{/arr}}
+    //   </ul>
+    // `;
+    const templateStr = document.getElementById('mytemplate').innerHTML
+    const data = {
+      arr: [
+        { name: "a", age: 1, sex: "男" },
+        { name: "b", age: 2, sex: "女" },
+        { name: "c", age: 3, sex: "男" },
+        { name: "d", age: 4, sex: "女" },
+        { name: "d", age: 4, sex: "女" },
+      ]
+    }
+    const domStr = Mustache.render(templateStr, data)
+    console.log(domStr);
+    const container = document.getElementById('container')
+    container.innerHTML = domStr
+  </script>
+</body>
+</html>

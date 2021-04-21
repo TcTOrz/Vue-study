@@ -1,0 +1,53 @@
+<!--
+ * @Author: Li Jian
+ * @Date: 2021-04-21 12:26:14
+ * @LastEditTime: 2021-04-21 13:21:53
+ * @LastEditors: Li Jian
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.数据变为视图-纯DOM法</title>
+  </head>
+  <body>
+    <ul id="list"></ul>
+    <script>
+      const arr = [
+        { name: "a", age: 1, sex: "男" },
+        { name: "b", age: 2, sex: "女" },
+        { name: "c", age: 3, sex: "男" },
+        { name: "d", age: 4, sex: "女" },
+        { name: "d", age: 4, sex: "女" },
+      ];
+      const list = document.getElementById('list')
+      for (let i = 0; i < arr.length; i++) {
+        let oLi = document.createElement('li')
+        let hdDiv = document.createElement('div')
+        let bdDiv = document.createElement('div')
+        // oLi.innerText = arr[i].name
+        hdDiv.className = 'hd'
+        hdDiv.innerText = arr[i].name + '的基本信息'
+
+        bdDiv.className = 'bd'
+        let p1 = document.createElement('p'),
+          p2 = document.createElement('p'),
+          p3 = document.createElement('p')
+        p1.innerText = `姓名: ${arr[i].name}`
+        bdDiv.appendChild(p1)
+        p2.innerText = `年龄: ${arr[i].age}`
+        bdDiv.appendChild(p2)
+        p3.innerText = `性别: ${arr[i].sex}`
+        bdDiv.appendChild(p3)
+
+        oLi.appendChild(hdDiv)
+        oLi.appendChild(bdDiv)
+        // 上树
+        list.appendChild(oLi)
+
+      }
+    </script>
+  </body>
+</html>

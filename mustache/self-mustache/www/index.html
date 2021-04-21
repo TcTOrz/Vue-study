@@ -1,0 +1,35 @@
+<!--
+ * @Author: Li Jian
+ * @Date: 2021-04-21 16:03:27
+ * @LastEditTime: 2021-04-21 17:25:44
+ * @LastEditors: Li Jian
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mustache</title>
+  <script src='/xuni/bundle.js'></script>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+    // const templateStr = '你们好{{thing}},我是{{mod}}a'
+    const templateStr = `<ul>
+        {{#arr}}
+          <li>{{name}}爱好：
+            <ol>
+              {{#hobbies}}
+                <li>{{.}}</li>
+              {{/hobbies}}
+            </ol>  
+          </li>
+        {{/arr}}  
+      </ul>`
+    const data = {}
+    templateEngine.render(templateStr, data)
+  </script>
+</body>
+</html>

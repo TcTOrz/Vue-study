@@ -1,0 +1,40 @@
+<!--
+ * @Author: Li Jian
+ * @Date: 2021-04-21 13:34:41
+ * @LastEditTime: 2021-04-21 13:37:12
+ * @LastEditors: Li Jian
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.数据变为视图-ES6反引号法</title>
+</head>
+<body>
+  <ul id="list"></ul>
+  <script>
+    const arr = [
+      { name: "a", age: 1, sex: "男" },
+      { name: "b", age: 2, sex: "女" },
+      { name: "c", age: 3, sex: "男" },
+      { name: "d", age: 4, sex: "女" },
+      { name: "d", age: 4, sex: "女" },
+    ];
+    const list = document.getElementById('list')
+    for (let i = 0; i<arr.length; i++) {
+      list.innerHTML += `
+        <li>
+          <div class="hd">${arr[i].name}的信息</div>
+          <div class="bd">
+            <p>姓名:${arr[i].name}</p>
+            <p>年龄:${arr[i].age}</p>
+            <p>性别:${arr[i].sex}</p>
+          </div>
+        </li>
+      `
+    }
+  </script>
+</body>
+</html>
