@@ -1,7 +1,7 @@
 /*
  * @Author: Li Jian
  * @Date: 2021-04-22 10:37:13
- * @LastEditTime: 2021-04-22 14:29:35
+ * @LastEditTime: 2021-04-22 14:42:36
  * @LastEditors: Li Jian
  */
 import lookup from "./lookup";
@@ -14,12 +14,12 @@ export default function renderTemplate(tokens, data) {
       resultStr += token[1];
     } else if (token[0] === "name") {
       resultStr += lookup(data, token[1]);
-      console.log(token);
+      // console.log(token);
     } else if (token[0] === "#") {
       // 递归
       resultStr += parseArray(token, data);
     }
   }
-  console.log(resultStr);
+  // console.log(resultStr);
   return resultStr;
 }

@@ -1,7 +1,7 @@
 <!--
  * @Author: Li Jian
  * @Date: 2021-04-21 16:03:27
- * @LastEditTime: 2021-04-22 12:25:51
+ * @LastEditTime: 2021-04-22 14:50:23
  * @LastEditors: Li Jian
 -->
 <!DOCTYPE html>
@@ -27,8 +27,10 @@
     // }
     const templateStr = `<ul>
       {{#arr}}
-        <li>{{name}}爱好：
-          {{age}}
+        <li>
+          姓名：{{name}}
+          年龄：{{age}}
+          爱好：
           <ol>
             {{#hobbies}}
               <li>{{.}}</li>
@@ -39,8 +41,8 @@
     </ul>`
     const data = {
       arr: [
-        {'name': '名', age: 12, 'hobbies': ['游戏', '编程']},
-        {'name': '名1', age: 13, 'hobbies': ['游戏1', '编程1']}
+        {'name': '名字1', age: 12, 'hobbies': ['游戏', '编程']},
+        {'name': '名字2', age: 13, 'hobbies': ['篮球', '足球']}
       ]
     }
     const domStr = templateEngine.render(templateStr, data)
