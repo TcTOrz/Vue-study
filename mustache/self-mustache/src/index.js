@@ -1,24 +1,17 @@
 /*
  * @Author: Li Jian
  * @Date: 2021-04-21 16:01:36
- * @LastEditTime: 2021-04-21 17:10:14
+ * @LastEditTime: 2021-04-22 12:25:00
  * @LastEditors: Li Jian
  */
 // import Scanner from './Scanner'
 import parseTemplateToTokens from './parseTemplateToTokens'
+import renderTemplate from './renderTemplate'
 
 window.templateEngine = {
   render(templateStr, data) {
     const tokens = parseTemplateToTokens(templateStr)
-    console.log(tokens);
-    // const scanner = new Scanner(templateStr)
-    // while (!scanner.eos()) {
-    //   let word = scanner.scanUtil('{{')
-    //   console.log(word);
-    //   scanner.scan('{{')
-    //   word = scanner.scanUtil('}}')
-    //   console.log(word);
-    //   scanner.scan('}}')
-    // }
+    const domStr = renderTemplate(tokens, data)
+    return domStr
   }
 }

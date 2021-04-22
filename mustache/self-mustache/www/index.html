@@ -1,7 +1,7 @@
 <!--
  * @Author: Li Jian
  * @Date: 2021-04-21 16:03:27
- * @LastEditTime: 2021-04-21 17:25:44
+ * @LastEditTime: 2021-04-22 12:25:51
  * @LastEditors: Li Jian
 -->
 <!DOCTYPE html>
@@ -16,20 +16,35 @@
 <body>
   <div id="container"></div>
   <script>
-    // const templateStr = '你们好{{thing}},我是{{mod}}a'
+    // const templateStr = '你好{{thing}}, 你们好{{a.b.c}}'
+    // const data = {
+    //   thing: '测试数据',
+    //   a: {
+    //     b: {
+    //       c: 100
+    //     }
+    //   }
+    // }
     const templateStr = `<ul>
-        {{#arr}}
-          <li>{{name}}爱好：
-            <ol>
-              {{#hobbies}}
-                <li>{{.}}</li>
-              {{/hobbies}}
-            </ol>  
-          </li>
-        {{/arr}}  
-      </ul>`
-    const data = {}
-    templateEngine.render(templateStr, data)
+      {{#arr}}
+        <li>{{name}}爱好：
+          {{age}}
+          <ol>
+            {{#hobbies}}
+              <li>{{.}}</li>
+            {{/hobbies}}
+          </ol>  
+        </li>
+      {{/arr}}  
+    </ul>`
+    const data = {
+      arr: [
+        {'name': '名', age: 12, 'hobbies': ['游戏', '编程']},
+        {'name': '名1', age: 13, 'hobbies': ['游戏1', '编程1']}
+      ]
+    }
+    const domStr = templateEngine.render(templateStr, data)
+    document.getElementById('container').innerHTML = domStr
   </script>
 </body>
 </html>

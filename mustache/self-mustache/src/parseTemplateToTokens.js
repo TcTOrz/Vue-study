@@ -1,10 +1,11 @@
 /*
  * @Author: Li Jian
  * @Date: 2021-04-21 17:08:20
- * @LastEditTime: 2021-04-21 17:22:17
+ * @LastEditTime: 2021-04-22 09:32:04
  * @LastEditors: Li Jian
  */
 import Scanner from './Scanner'
+import nextTokens from './nextTokens'
 export default function parseTemplateToTokens(templateStr) {
   let tokens = []
 
@@ -30,5 +31,5 @@ export default function parseTemplateToTokens(templateStr) {
     words = scanner.scan('}}')
   }
 
-  return tokens
+  return nextTokens(tokens)
 }
